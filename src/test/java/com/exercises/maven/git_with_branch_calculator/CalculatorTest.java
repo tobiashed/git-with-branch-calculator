@@ -2,6 +2,7 @@ package com.exercises.maven.git_with_branch_calculator;
 
 import static org.junit.Assert.*;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -55,5 +56,39 @@ public class CalculatorTest {
 			LOG.info("Testing the method with " + firstNumber + " and " + secondNumber);
 			assertEquals(c.multiply(firstNumber, secondNumber), result);
 		}
+	}
+	@Test
+	public void testDivide() {
+		DecimalFormat df = new DecimalFormat("#.##");
+		Random random = new Random();
+		double firstNumber = 0;
+		double secondNumber = 0;
+		double result = -0.123456789;
+		
+		LOG.info("Testing the method with: "+ firstNumber +" and " + secondNumber);
+		assertEquals(Math.round(c.divide(firstNumber, secondNumber)), Math.round(result));
+		
+		for(int i = 0;i<10;i++) {
+		firstNumber = Double.valueOf(df.format(random.nextDouble()*100));
+		secondNumber = 0;
+		result = -0.123456789;
+		LOG.info("Testing the method with: "+ firstNumber +" and " + secondNumber);
+		assertEquals(Math.round(c.divide(firstNumber, secondNumber)), Math.round(result));
+		
+		firstNumber = 0;
+		secondNumber = Double.valueOf(df.format(random.nextDouble()*100));
+		result = firstNumber / secondNumber;
+		LOG.info("Testing the method with: "+ firstNumber +" and " + secondNumber);
+		assertEquals(Math.round(c.divide(firstNumber, secondNumber)), Math.round(result));
+		
+		firstNumber = Double.valueOf(df.format(random.nextDouble()*100));
+		secondNumber = Double.valueOf(df.format(random.nextDouble()*100));
+		result = firstNumber / secondNumber;
+		LOG.info("Testing the method with: "+ firstNumber +" and " + secondNumber);
+		assertEquals(Math.round(c.divide(firstNumber, secondNumber)), Math.round(result));
+		
+		
+		}
+		
 	}
 }
